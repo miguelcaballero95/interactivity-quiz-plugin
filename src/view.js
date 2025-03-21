@@ -17,9 +17,15 @@ const { state } = store('create-block', {
         toggleTheme() {
             state.isDark = !state.isDark;
         },
-        buttonHandler() {
+        guessAttempt() {
             const context = getContext();
-            context.clickCount++;
+
+            if (context.index === context.correctAnswer) {
+                context.showCongrats = true;
+            } else {
+                context.showSorry = true;
+            }
+
         }
     },
     callbacks: {
